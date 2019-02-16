@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60868B934E219996DCF589DB /* Pods_QRQuiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E3B543C12169F0DB93C421 /* Pods_QRQuiz.framework */; };
 		CA3BDF6E2217C510000D497D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF6D2217C510000D497D /* AppDelegate.swift */; };
 		CA3BDF702217C510000D497D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF6F2217C510000D497D /* ViewController.swift */; };
 		CA3BDF732217C510000D497D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3BDF712217C510000D497D /* Main.storyboard */; };
 		CA3BDF752217C513000D497D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA3BDF742217C513000D497D /* Assets.xcassets */; };
 		CA3BDF782217C513000D497D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3BDF762217C513000D497D /* LaunchScreen.storyboard */; };
+		CA3BDF802217C670000D497D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA3BDF7F2217C670000D497D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		010A2E171994F2A96A1E0C2E /* Pods-QRQuiz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRQuiz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QRQuiz/Pods-QRQuiz.debug.xcconfig"; sourceTree = "<group>"; };
+		66E3B543C12169F0DB93C421 /* Pods_QRQuiz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRQuiz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD510E4BF272142C84A29818 /* Pods-QRQuiz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRQuiz.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRQuiz/Pods-QRQuiz.release.xcconfig"; sourceTree = "<group>"; };
 		CA3BDF6A2217C510000D497D /* QRQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3BDF6D2217C510000D497D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA3BDF6F2217C510000D497D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,7 @@
 		CA3BDF742217C513000D497D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA3BDF772217C513000D497D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA3BDF792217C513000D497D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA3BDF7F2217C670000D497D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60868B934E219996DCF589DB /* Pods_QRQuiz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				CA3BDF6C2217C510000D497D /* QRQuiz */,
 				CA3BDF6B2217C510000D497D /* Products */,
+				CD0B02AAAD9BC44627256F72 /* Pods */,
+				F0764BEAE68F662B2FA24542 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +69,26 @@
 				CA3BDF742217C513000D497D /* Assets.xcassets */,
 				CA3BDF762217C513000D497D /* LaunchScreen.storyboard */,
 				CA3BDF792217C513000D497D /* Info.plist */,
+				CA3BDF7F2217C670000D497D /* GoogleService-Info.plist */,
 			);
 			path = QRQuiz;
+			sourceTree = "<group>";
+		};
+		CD0B02AAAD9BC44627256F72 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				010A2E171994F2A96A1E0C2E /* Pods-QRQuiz.debug.xcconfig */,
+				AD510E4BF272142C84A29818 /* Pods-QRQuiz.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F0764BEAE68F662B2FA24542 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66E3B543C12169F0DB93C421 /* Pods_QRQuiz.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA3BDF7C2217C513000D497D /* Build configuration list for PBXNativeTarget "QRQuiz" */;
 			buildPhases = (
+				1D166E94A1387E14E4CC5B11 /* [CP] Check Pods Manifest.lock */,
 				CA3BDF662217C510000D497D /* Sources */,
 				CA3BDF672217C510000D497D /* Frameworks */,
 				CA3BDF682217C510000D497D /* Resources */,
+				677850538A62E401F69FF96C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,12 +152,68 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA3BDF782217C513000D497D /* LaunchScreen.storyboard in Resources */,
+				CA3BDF802217C670000D497D /* GoogleService-Info.plist in Resources */,
 				CA3BDF752217C513000D497D /* Assets.xcassets in Resources */,
 				CA3BDF732217C510000D497D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1D166E94A1387E14E4CC5B11 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QRQuiz-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		677850538A62E401F69FF96C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-QRQuiz/Pods-QRQuiz-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QRQuiz/Pods-QRQuiz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA3BDF662217C510000D497D /* Sources */ = {
@@ -280,6 +365,7 @@
 		};
 		CA3BDF7D2217C513000D497D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 010A2E171994F2A96A1E0C2E /* Pods-QRQuiz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +384,7 @@
 		};
 		CA3BDF7E2217C513000D497D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD510E4BF272142C84A29818 /* Pods-QRQuiz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
