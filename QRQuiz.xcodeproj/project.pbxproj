@@ -18,6 +18,8 @@
 		CA3BDF8C2217CA6D000D497D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF8B2217CA6D000D497D /* LoginViewController.swift */; };
 		CA3BDF8E2217CA89000D497D /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF8D2217CA89000D497D /* LoginTableViewCell.swift */; };
 		CA3BDF902217CC65000D497D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF8F2217CC65000D497D /* UserManager.swift */; };
+		CA3BDF922217D902000D497D /* QuestionStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3BDF912217D901000D497D /* QuestionStoryboard.storyboard */; };
+		CA3BDF942217D91F000D497D /* Profile+ScanStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3BDF932217D91F000D497D /* Profile+ScanStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		CA3BDF8B2217CA6D000D497D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CA3BDF8D2217CA89000D497D /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
 		CA3BDF8F2217CC65000D497D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		CA3BDF912217D901000D497D /* QuestionStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuestionStoryboard.storyboard; sourceTree = "<group>"; };
+		CA3BDF932217D91F000D497D /* Profile+ScanStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Profile+ScanStoryboard.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				CA3BDF6D2217C510000D497D /* AppDelegate.swift */,
 				CA3BDF6F2217C510000D497D /* ViewController.swift */,
 				CA3BDF712217C510000D497D /* Main.storyboard */,
+				CA3BDF912217D901000D497D /* QuestionStoryboard.storyboard */,
+				CA3BDF932217D91F000D497D /* Profile+ScanStoryboard.storyboard */,
 				CA3BDF742217C513000D497D /* Assets.xcassets */,
 				CA3BDF762217C513000D497D /* LaunchScreen.storyboard */,
 				CA3BDF792217C513000D497D /* Info.plist */,
@@ -173,6 +179,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA3BDF782217C513000D497D /* LaunchScreen.storyboard in Resources */,
+				CA3BDF922217D902000D497D /* QuestionStoryboard.storyboard in Resources */,
+				CA3BDF942217D91F000D497D /* Profile+ScanStoryboard.storyboard in Resources */,
 				CA3BDF802217C670000D497D /* GoogleService-Info.plist in Resources */,
 				CA3BDF752217C513000D497D /* Assets.xcassets in Resources */,
 				CA3BDF732217C510000D497D /* Main.storyboard in Resources */,
