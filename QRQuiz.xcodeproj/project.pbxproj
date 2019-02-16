@@ -14,6 +14,10 @@
 		CA3BDF752217C513000D497D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA3BDF742217C513000D497D /* Assets.xcassets */; };
 		CA3BDF782217C513000D497D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3BDF762217C513000D497D /* LaunchScreen.storyboard */; };
 		CA3BDF802217C670000D497D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA3BDF7F2217C670000D497D /* GoogleService-Info.plist */; };
+		CA3BDF862217C9C6000D497D /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF852217C9C6000D497D /* Member.swift */; };
+		CA3BDF8C2217CA6D000D497D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF8B2217CA6D000D497D /* LoginViewController.swift */; };
+		CA3BDF8E2217CA89000D497D /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF8D2217CA89000D497D /* LoginTableViewCell.swift */; };
+		CA3BDF902217CC65000D497D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF8F2217CC65000D497D /* UserManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		CA3BDF772217C513000D497D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA3BDF792217C513000D497D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA3BDF7F2217C670000D497D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CA3BDF852217C9C6000D497D /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		CA3BDF8B2217CA6D000D497D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CA3BDF8D2217CA89000D497D /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
+		CA3BDF8F2217CC65000D497D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,7 @@
 		CA3BDF6C2217C510000D497D /* QRQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				CA3BDF8A2217CA61000D497D /* login */,
 				CA3BDF6D2217C510000D497D /* AppDelegate.swift */,
 				CA3BDF6F2217C510000D497D /* ViewController.swift */,
 				CA3BDF712217C510000D497D /* Main.storyboard */,
@@ -70,8 +79,19 @@
 				CA3BDF762217C513000D497D /* LaunchScreen.storyboard */,
 				CA3BDF792217C513000D497D /* Info.plist */,
 				CA3BDF7F2217C670000D497D /* GoogleService-Info.plist */,
+				CA3BDF8F2217CC65000D497D /* UserManager.swift */,
+				CA3BDF852217C9C6000D497D /* Member.swift */,
 			);
 			path = QRQuiz;
+			sourceTree = "<group>";
+		};
+		CA3BDF8A2217CA61000D497D /* login */ = {
+			isa = PBXGroup;
+			children = (
+				CA3BDF8B2217CA6D000D497D /* LoginViewController.swift */,
+				CA3BDF8D2217CA89000D497D /* LoginTableViewCell.swift */,
+			);
+			path = login;
 			sourceTree = "<group>";
 		};
 		CD0B02AAAD9BC44627256F72 /* Pods */ = {
@@ -103,6 +123,7 @@
 				CA3BDF672217C510000D497D /* Frameworks */,
 				CA3BDF682217C510000D497D /* Resources */,
 				677850538A62E401F69FF96C /* [CP] Embed Pods Frameworks */,
+				E50919DCD2A3E16287469A5D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,25 +213,61 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-QRQuiz/Pods-QRQuiz-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QRQuiz/Pods-QRQuiz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E50919DCD2A3E16287469A5D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-QRQuiz/Pods-QRQuiz-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QRQuiz/Pods-QRQuiz-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -220,8 +277,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA3BDF902217CC65000D497D /* UserManager.swift in Sources */,
+				CA3BDF8C2217CA6D000D497D /* LoginViewController.swift in Sources */,
 				CA3BDF702217C510000D497D /* ViewController.swift in Sources */,
 				CA3BDF6E2217C510000D497D /* AppDelegate.swift in Sources */,
+				CA3BDF862217C9C6000D497D /* Member.swift in Sources */,
+				CA3BDF8E2217CA89000D497D /* LoginTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

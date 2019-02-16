@@ -7,6 +7,10 @@ target 'QRQuiz' do
 
   # Pods for QRQuiz
   pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'Firebase/Auth'
+  pod 'FirebaseUI/Storage'
 end
