@@ -31,11 +31,19 @@ class UserManager {
         return allUserRelay.asObservable()
     }
     
-    private init(){
-        startListenAllUser()
+    private var usersMemberDataRelay = BehaviorRelay<Member?>(value: nil)
+    var usersMemberData: Observable<Member?> {
+        return usersMemberDataRelay.asObservable()
     }
     
-    func startListenAllUser() {
+    var usersIdListener: ListenerRegistration?
+    var usersMemberDataListener: ListenerRegistration?
+    
+    private init(){
+        startListenAllMember()
+    }
+    
+    func startListenAllMember() {
         db.collection("Member").addSnapshotListener {[weak self] (querySnapshot, error) in
             guard let snapshot = querySnapshot else {
                 print("Error fetching snapshots: \(error!)")
@@ -71,7 +79,6 @@ class UserManager {
         
     }
     
-    
     func login(member: Member) -> Observable<User>{
         return Observable.create({[weak self] (observer) -> Disposable in
             Auth.auth().signInAnonymously(completion: { (result, error) in
@@ -85,7 +92,7 @@ class UserManager {
                         } else {
                             observer.onNext((self?.user!)!)
                             observer.onCompleted()
-                            //完了時の処理かくところ
+                            self?.startListening()
                         }
                     })
                 }
@@ -94,5 +101,49 @@ class UserManager {
         })
     }
     
+    func startListening() {
+        guard let user = user else {
+            return
+        }
+        if let usersIdListener = usersIdListener {
+            usersIdListener.remove()
+        }
+        usersIdListener = db.collection("User").document(user.uid).addSnapshotListener {[weak self] (documentSnapshot, error) in
+            guard let document = documentSnapshot else {
+                print("Error fetching document: \(error!)")
+                return
+            }
+            guard let data = document.data(),
+                let id = data["id"] as? Int else {
+                    return
+            }
+            self?.listenUsersMemberData(id: id)
+        }
+    }
     
+    func listenUsersMemberData(id: Int) {
+        if let usersMemberDataListener = usersMemberDataListener {
+            usersMemberDataListener.remove()
+        }
+        usersMemberDataListener = db.collection("Member").document(String(id)).addSnapshotListener {[weak self] (documentSnapshot, error) in
+            guard let document = documentSnapshot else {
+                print("Error fetching document: \(error!)")
+                return
+            }
+            guard let data = document.data(),
+                let name = data["name"] as? String,
+                let group = data["group"] as? String,
+                let imageString = data["imageRef"] as? String
+                else {
+                    return
+            }
+            let member = Member(id: id, name: name, group: group, imageString: imageString)
+            self?.usersMemberDataRelay.accept(member)
+            GroupManager.shared.startListening(groupID: group)
+        }
+    }
+    
+    func logout() {
+        try? Auth.auth().signOut()
+    }
 }

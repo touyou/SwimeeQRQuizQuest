@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		60868B934E219996DCF589DB /* Pods_QRQuiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E3B543C12169F0DB93C421 /* Pods_QRQuiz.framework */; };
 		CA3BDF6E2217C510000D497D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF6D2217C510000D497D /* AppDelegate.swift */; };
-		CA3BDF702217C510000D497D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF6F2217C510000D497D /* ViewController.swift */; };
 		CA3BDF732217C510000D497D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3BDF712217C510000D497D /* Main.storyboard */; };
 		CA3BDF752217C513000D497D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA3BDF742217C513000D497D /* Assets.xcassets */; };
 		CA3BDF782217C513000D497D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3BDF762217C513000D497D /* LaunchScreen.storyboard */; };
@@ -18,8 +17,14 @@
 		CA3BDF8C2217CA6D000D497D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF8B2217CA6D000D497D /* LoginViewController.swift */; };
 		CA3BDF8E2217CA89000D497D /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF8D2217CA89000D497D /* LoginTableViewCell.swift */; };
 		CA3BDF902217CC65000D497D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF8F2217CC65000D497D /* UserManager.swift */; };
-		CA3BDF922217D902000D497D /* QuestionStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3BDF912217D901000D497D /* QuestionStoryboard.storyboard */; };
-		CA3BDF942217D91F000D497D /* Profile+ScanStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA3BDF932217D91F000D497D /* Profile+ScanStoryboard.storyboard */; };
+		CA3BDF9622182FAB000D497D /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF9522182FAB000D497D /* CircleImageView.swift */; };
+		CA3BDF9822183072000D497D /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF9722183072000D497D /* TopViewController.swift */; };
+		CA3BDF9C221ABFEC000D497D /* LogoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF9B221ABFEC000D497D /* LogoutTableViewController.swift */; };
+		CA3BDF9E221AC121000D497D /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF9D221AC121000D497D /* GroupManager.swift */; };
+		CA3BDFA0221AC196000D497D /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDF9F221AC196000D497D /* Group.swift */; };
+		CA3BDFA2221AF758000D497D /* QuizManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDFA1221AF758000D497D /* QuizManager.swift */; };
+		CA3BDFA4221AF781000D497D /* QuizCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDFA3221AF781000D497D /* QuizCollection.swift */; };
+		CA3BDFA6221AF7D4000D497D /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDFA5221AF7D4000D497D /* Quiz.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +33,6 @@
 		AD510E4BF272142C84A29818 /* Pods-QRQuiz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRQuiz.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRQuiz/Pods-QRQuiz.release.xcconfig"; sourceTree = "<group>"; };
 		CA3BDF6A2217C510000D497D /* QRQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3BDF6D2217C510000D497D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CA3BDF6F2217C510000D497D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CA3BDF722217C510000D497D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA3BDF742217C513000D497D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA3BDF772217C513000D497D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,8 +42,14 @@
 		CA3BDF8B2217CA6D000D497D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CA3BDF8D2217CA89000D497D /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
 		CA3BDF8F2217CC65000D497D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		CA3BDF912217D901000D497D /* QuestionStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuestionStoryboard.storyboard; sourceTree = "<group>"; };
-		CA3BDF932217D91F000D497D /* Profile+ScanStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Profile+ScanStoryboard.storyboard"; sourceTree = "<group>"; };
+		CA3BDF9522182FAB000D497D /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
+		CA3BDF9722183072000D497D /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
+		CA3BDF9B221ABFEC000D497D /* LogoutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTableViewController.swift; sourceTree = "<group>"; };
+		CA3BDF9D221AC121000D497D /* GroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
+		CA3BDF9F221AC196000D497D /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		CA3BDFA1221AF758000D497D /* QuizManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizManager.swift; sourceTree = "<group>"; };
+		CA3BDFA3221AF781000D497D /* QuizCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCollection.swift; sourceTree = "<group>"; };
+		CA3BDFA5221AF7D4000D497D /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,16 +87,21 @@
 			children = (
 				CA3BDF8A2217CA61000D497D /* login */,
 				CA3BDF6D2217C510000D497D /* AppDelegate.swift */,
-				CA3BDF6F2217C510000D497D /* ViewController.swift */,
+				CA3BDF9722183072000D497D /* TopViewController.swift */,
 				CA3BDF712217C510000D497D /* Main.storyboard */,
-				CA3BDF912217D901000D497D /* QuestionStoryboard.storyboard */,
-				CA3BDF932217D91F000D497D /* Profile+ScanStoryboard.storyboard */,
 				CA3BDF742217C513000D497D /* Assets.xcassets */,
 				CA3BDF762217C513000D497D /* LaunchScreen.storyboard */,
 				CA3BDF792217C513000D497D /* Info.plist */,
 				CA3BDF7F2217C670000D497D /* GoogleService-Info.plist */,
 				CA3BDF8F2217CC65000D497D /* UserManager.swift */,
 				CA3BDF852217C9C6000D497D /* Member.swift */,
+				CA3BDF9522182FAB000D497D /* CircleImageView.swift */,
+				CA3BDF9B221ABFEC000D497D /* LogoutTableViewController.swift */,
+				CA3BDF9D221AC121000D497D /* GroupManager.swift */,
+				CA3BDF9F221AC196000D497D /* Group.swift */,
+				CA3BDFA1221AF758000D497D /* QuizManager.swift */,
+				CA3BDFA3221AF781000D497D /* QuizCollection.swift */,
+				CA3BDFA5221AF7D4000D497D /* Quiz.swift */,
 			);
 			path = QRQuiz;
 			sourceTree = "<group>";
@@ -179,8 +194,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA3BDF782217C513000D497D /* LaunchScreen.storyboard in Resources */,
-				CA3BDF922217D902000D497D /* QuestionStoryboard.storyboard in Resources */,
-				CA3BDF942217D91F000D497D /* Profile+ScanStoryboard.storyboard in Resources */,
 				CA3BDF802217C670000D497D /* GoogleService-Info.plist in Resources */,
 				CA3BDF752217C513000D497D /* Assets.xcassets in Resources */,
 				CA3BDF732217C510000D497D /* Main.storyboard in Resources */,
@@ -287,7 +300,14 @@
 			files = (
 				CA3BDF902217CC65000D497D /* UserManager.swift in Sources */,
 				CA3BDF8C2217CA6D000D497D /* LoginViewController.swift in Sources */,
-				CA3BDF702217C510000D497D /* ViewController.swift in Sources */,
+				CA3BDF9E221AC121000D497D /* GroupManager.swift in Sources */,
+				CA3BDFA0221AC196000D497D /* Group.swift in Sources */,
+				CA3BDFA4221AF781000D497D /* QuizCollection.swift in Sources */,
+				CA3BDF9622182FAB000D497D /* CircleImageView.swift in Sources */,
+				CA3BDF9C221ABFEC000D497D /* LogoutTableViewController.swift in Sources */,
+				CA3BDF9822183072000D497D /* TopViewController.swift in Sources */,
+				CA3BDFA2221AF758000D497D /* QuizManager.swift in Sources */,
+				CA3BDFA6221AF7D4000D497D /* Quiz.swift in Sources */,
 				CA3BDF6E2217C510000D497D /* AppDelegate.swift in Sources */,
 				CA3BDF862217C9C6000D497D /* Member.swift in Sources */,
 				CA3BDF8E2217CA89000D497D /* LoginTableViewCell.swift in Sources */,
