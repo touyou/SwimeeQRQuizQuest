@@ -36,13 +36,28 @@ class GroupManager {
                 return
             }
             guard let data = document.data(),
-                let score = data["score"] as? Int
+                let score = data["score"] as? Int,
+                let rawQuizState = data["quizState"] as? [String: String],
+                let quizState = self?.createQuizState(dataDictionaly: rawQuizState)
                 else {
                     return
             }
-            let group = Group(id: groupID, score: score)
+            let group = Group(id: groupID, score: score, quizState: quizState)
             self?.currentGroupRelay.accept(group)
         }
         
+    }
+    
+    func createQuizState(dataDictionaly: [String: String]) -> [Int: QuizState] {
+        var quizState: [Int: QuizState] = [:]
+        for data in dataDictionaly {
+            guard let state = QuizState(rawValue: data.value),
+                let id = Int(data.key)
+                else {
+                continue
+            }
+            quizState.updateValue(state, forKey: id)
+        }
+        return quizState
     }
 }

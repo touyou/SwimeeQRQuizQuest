@@ -239,28 +239,28 @@
                                 <rect key="frame" x="16" y="188" width="343" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7v6-u6-iss">
-                                    <size key="itemSize" width="107" height="113"/>
+                                    <size key="itemSize" width="88" height="101"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cC8-m2-kZf">
-                                        <rect key="frame" x="0.0" y="0.0" width="107" height="113"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="cC8-m2-kZf" customClass="TopCollectionViewCell" customModule="QRQuiz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="88" height="101"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="107" height="113"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="88" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ixw-pd-vti">
-                                                    <rect key="frame" x="23.5" y="10" width="60" height="60"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ixw-pd-vti" customClass="CircleImageView" customModule="QRQuiz" customModuleProvider="target">
+                                                    <rect key="frame" x="14" y="10" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="cGV-hQ-cic"/>
                                                         <constraint firstAttribute="height" constant="60" id="uiE-gF-opH"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSa-9m-9SO">
-                                                    <rect key="frame" x="10" y="80" width="87" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSa-9m-9SO">
+                                                    <rect key="frame" x="10" y="80" width="68" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="uAt-no-Ojn"/>
                                                     </constraints>
@@ -277,6 +277,10 @@
                                             <constraint firstItem="NSa-9m-9SO" firstAttribute="top" secondItem="Ixw-pd-vti" secondAttribute="bottom" constant="10" id="bQ7-jO-awQ"/>
                                             <constraint firstItem="Ixw-pd-vti" firstAttribute="top" secondItem="cC8-m2-kZf" secondAttribute="top" constant="10" id="cLg-Zq-WPn"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="Ixw-pd-vti" id="5RP-bu-gF9"/>
+                                            <outlet property="label" destination="NSa-9m-9SO" id="2Gn-kj-D2a"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -325,6 +329,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="XEf-ZV-vOF" id="DHc-qF-cmV"/>
                         <outlet property="groupLabel" destination="Xat-LT-emK" id="ZS7-GV-QLo"/>
                         <outlet property="memberImageView" destination="Jhs-fJ-Pmy" id="vQT-5l-25J"/>
                         <outlet property="nameLabel" destination="HHF-JE-BNV" id="oIY-pj-gok"/>
@@ -333,7 +338,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bbv-fx-4Nh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1988" y="920"/>
+            <point key="canvasLocation" x="1988" y="919.79010494752629"/>
         </scene>
         <!--Logout Table View Controller-->
         <scene sceneID="k2R-kL-y5X">
