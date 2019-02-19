@@ -18,7 +18,9 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        bindTableView()
+        didSelect()
         // Do any additional setup after loading the view.
     }
     

@@ -27,7 +27,7 @@ class LoginTableViewCell: UITableViewCell {
     }
     
     func setup(_ member: Member) {
-        memberImageView.sd_setImage(with: member.imageRef)
+        memberImageView.sd_setImage(with: member.imageRef, placeholderImage: #imageLiteral(resourceName: "icon_user"))
         nameLabel.text = member.name
     }
 
