@@ -19,7 +19,7 @@ class GroupManager {
     private init(){
     }
     
-    private let currentGroupRelay = BehaviorRelay<Group?>(value: nil)
+    let currentGroupRelay = BehaviorRelay<Group?>(value: nil)
     var currentGroup: Observable<Group?> {
         return currentGroupRelay.asObservable()
     }
@@ -38,12 +38,18 @@ class GroupManager {
             guard let data = document.data(),
                 let score = data["score"] as? Int,
                 let rawQuizState = data["quizState"] as? [String: String],
-                let quizState = self?.createQuizState(dataDictionaly: rawQuizState)
+                let quizState = self?.createQuizState(dataDictionaly: rawQuizState),
+                let rawViewControllerState = data["viewControllerState"] as? [String: Any],
+                let viewControllerState = self?.createViewControllerState(dataDictionaly: rawViewControllerState)
                 else {
                     return
             }
-            let group = Group(id: groupID, score: score, quizState: quizState)
+            let group = Group(id: groupID, score: score, quizState: quizState, viewControllerState: viewControllerState)
             self?.currentGroupRelay.accept(group)
+            if group.viewControllerState.type != .notAnswering {
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Quiz")
+                UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
+            }
         }
         
     }
@@ -59,5 +65,72 @@ class GroupManager {
             quizState.updateValue(state, forKey: id)
         }
         return quizState
+    }
+    
+    func createViewControllerState(dataDictionaly: [String: Any]) -> ViewControllerState? {
+        guard let type = ViewControllerStateType(rawValue: dataDictionaly["type"] as! String) else {
+            return nil
+        }
+        let quizCollectionID = dataDictionaly["quizCollectionID"] as? Int
+        let quizID = dataDictionaly["quizID"] as? Int
+        let choise = dataDictionaly["choise"] as? [String]
+        let answer = dataDictionaly["answer"] as? Int
+        let selected = dataDictionaly["selected"] as? Int
+        let answerer = dataDictionaly["answerer"] as? Int
+        let question = dataDictionaly["question"] as? String
+        let score = dataDictionaly["score"] as? Int
+        let next = dataDictionaly["next"] as? Int
+        return ViewControllerState(type: type, quizCollectionID: quizCollectionID, quizID: quizID, choise: choise, answer: answer, selected: selected, answerer: answerer, question: question, score: score, next: next)
+    }
+    
+    func scannedScanableNext(collectionID: Int) {
+        guard let groupID = GroupManager.shared.currentGroupRelay.value?.id else {
+            return
+        }
+        var quizState = GroupManager.shared.currentGroupRelay.value?.quizState
+        quizState?.updateValue(.answerable, forKey: collectionID)
+        var quizStateString: [String:String] = [:]
+        for data in quizState! {
+            let state = data.value.rawValue
+            quizStateString.updateValue(state, forKey: String(data.key))
+        }
+        db.collection("Group").document(groupID).updateData([
+            "quizState": quizStateString
+        ])
+    }
+    
+    func scannedScanableBack(collectionID: Int) {
+        guard let groupID = GroupManager.shared.currentGroupRelay.value?.id else {
+            return
+        }
+        var quizState = GroupManager.shared.currentGroupRelay.value?.quizState
+        quizState?.updateValue(.gotGemLast, forKey: collectionID)
+        var nextQuizCollectionID: Int!
+        var quizCollectionArray = QuizManager.shared.quizCollectionArrayRelay.value
+        repeat{
+            let nextQuizCollection = quizCollectionArray.randomElement()
+            nextQuizCollectionID = nextQuizCollection?.id
+            quizCollectionArray.remove(at: quizCollectionArray.firstIndex(of: nextQuizCollection!)!)
+            if quizCollectionArray.count == 0 {
+                var quizStateString: [String:String] = [:]
+                for data in quizState! {
+                    let state = data.value.rawValue
+                    quizStateString.updateValue(state, forKey: String(data.key))
+                }
+                db.collection("Group").document(groupID).updateData([
+                    "quizState": quizStateString
+                ])
+                return
+            }
+        }while GroupManager.shared.currentGroupRelay.value?.quizState[nextQuizCollectionID] != nil && GroupManager.shared.currentGroupRelay.value?.quizState[nextQuizCollectionID] != QuizState.none
+        quizState?.updateValue(.scanableNext, forKey: nextQuizCollectionID)
+        var quizStateString: [String:String] = [:]
+        for data in quizState! {
+            let state = data.value.rawValue
+            quizStateString.updateValue(state, forKey: String(data.key))
+        }
+        db.collection("Group").document(groupID).updateData([
+            "quizState": quizStateString
+        ])
     }
 }

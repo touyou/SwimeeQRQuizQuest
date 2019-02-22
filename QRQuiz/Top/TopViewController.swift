@@ -103,6 +103,10 @@ class TopViewController: UIViewController {
                     cell.imageView.alpha = 1
                     cell.imageView.image = nil
                     cell.flashing(false)
+                case .gotGemLast:
+                    cell.imageView.alpha = 1
+                    cell.imageView.image = #imageLiteral(resourceName: "jewel_dia_1")
+                    cell.flashing(false)
                 }
             }
             .disposed(by: disposeBag)
@@ -119,7 +123,7 @@ class TopViewController: UIViewController {
             .subscribe(onNext: {[weak self] (indexPath, state) in
                 switch state {
                 case .answerable:
-                    break
+                    QuizManager.shared.showQuiz(index: indexPath.row)
                 case .scanableNext:
                     break
                 case .scanableBack:
@@ -129,6 +133,8 @@ class TopViewController: UIViewController {
                 case .couldnotGet:
                     break
                 case .none:
+                    break
+                case .gotGemLast:
                     break
                 }
             })

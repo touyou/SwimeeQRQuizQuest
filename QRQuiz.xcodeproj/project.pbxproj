@@ -47,6 +47,11 @@
 		CA3BDFA4221AF781000D497D /* QuizCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BDFA3221AF781000D497D /* QuizCollection.swift */; };
 		CAB8D47E221BB606000F30FB /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB8D47D221BB606000F30FB /* Quiz.swift */; };
 		CAB8D480221BD70F000F30FB /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB8D47F221BD70F000F30FB /* TopCollectionViewCell.swift */; };
+		CAB8D485221BEE2D000F30FB /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB8D484221BEE2D000F30FB /* QuizViewController.swift */; };
+		CAB8D487221BF112000F30FB /* ViewControllerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB8D486221BF112000F30FB /* ViewControllerState.swift */; };
+		CAB8D489221C2CB8000F30FB /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB8D488221C2CB8000F30FB /* ResultViewController.swift */; };
+		CAB8D48B22205299000F30FB /* QRScaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB8D48A22205299000F30FB /* QRScaner.swift */; };
+		CAB8D48D222052CB000F30FB /* QRScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB8D48C222052CB000F30FB /* QRScanViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +99,11 @@
 		CA3BDFA3221AF781000D497D /* QuizCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCollection.swift; sourceTree = "<group>"; };
 		CAB8D47D221BB606000F30FB /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		CAB8D47F221BD70F000F30FB /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
+		CAB8D484221BEE2D000F30FB /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		CAB8D486221BF112000F30FB /* ViewControllerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerState.swift; sourceTree = "<group>"; };
+		CAB8D488221C2CB8000F30FB /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		CAB8D48A22205299000F30FB /* QRScaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScaner.swift; sourceTree = "<group>"; };
+		CAB8D48C222052CB000F30FB /* QRScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +189,10 @@
 				CA3BDF9522182FAB000D497D /* CircleImageView.swift */,
 				CAB8D482221BD725000F30FB /* Quiz */,
 				CAB8D483221BD734000F30FB /* Group */,
+				CAB8D484221BEE2D000F30FB /* QuizViewController.swift */,
+				CAB8D488221C2CB8000F30FB /* ResultViewController.swift */,
+				CAB8D48A22205299000F30FB /* QRScaner.swift */,
+				CAB8D48C222052CB000F30FB /* QRScanViewController.swift */,
 			);
 			path = QRQuiz;
 			sourceTree = "<group>";
@@ -217,6 +231,7 @@
 			children = (
 				CA3BDF9D221AC121000D497D /* GroupManager.swift */,
 				CA3BDF9F221AC196000D497D /* Group.swift */,
+				CAB8D486221BF112000F30FB /* ViewControllerState.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -424,6 +439,7 @@
 			files = (
 				CAB8D480221BD70F000F30FB /* TopCollectionViewCell.swift in Sources */,
 				46AD0014221BA51C005CE76B /* UIView+Shadow.swift in Sources */,
+				CAB8D48D222052CB000F30FB /* QRScanViewController.swift in Sources */,
 				CA3BDF902217CC65000D497D /* UserManager.swift in Sources */,
 				CA3BDF8C2217CA6D000D497D /* LoginViewController.swift in Sources */,
 				CA3BDF9E221AC121000D497D /* GroupManager.swift in Sources */,
@@ -434,9 +450,13 @@
 				CA3BDF9822183072000D497D /* TopViewController.swift in Sources */,
 				CA3BDFA2221AF758000D497D /* QuizManager.swift in Sources */,
 				CA3BDF6E2217C510000D497D /* AppDelegate.swift in Sources */,
+				CAB8D487221BF112000F30FB /* ViewControllerState.swift in Sources */,
 				46AD0012221B9DC6005CE76B /* UIColor+QRQuiz.swift in Sources */,
 				CA3BDF862217C9C6000D497D /* Member.swift in Sources */,
+				CAB8D489221C2CB8000F30FB /* ResultViewController.swift in Sources */,
 				46AD0016221BA580005CE76B /* UINavigationController+Extensions.swift in Sources */,
+				CAB8D485221BEE2D000F30FB /* QuizViewController.swift in Sources */,
+				CAB8D48B22205299000F30FB /* QRScaner.swift in Sources */,
 				CAB8D47E221BB606000F30FB /* Quiz.swift in Sources */,
 				CA3BDF8E2217CA89000D497D /* LoginTableViewCell.swift in Sources */,
 			);

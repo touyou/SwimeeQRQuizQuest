@@ -31,7 +31,7 @@ class UserManager {
         return allUserRelay.asObservable()
     }
     
-    private var usersMemberDataRelay = BehaviorRelay<Member?>(value: nil)
+    let usersMemberDataRelay = BehaviorRelay<Member?>(value: nil)
     var usersMemberData: Observable<Member?> {
         return usersMemberDataRelay.asObservable()
     }

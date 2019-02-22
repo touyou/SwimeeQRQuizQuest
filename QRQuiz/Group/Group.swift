@@ -14,6 +14,7 @@ enum QuizState: String {
     case scanableBack
     case gotGem
     case couldnotGet
+    case gotGemLast
     case none
 }
 
@@ -21,10 +22,12 @@ class Group {
     var id: String
     var score: Int
     var quizState: [Int: QuizState]
+    var viewControllerState: ViewControllerState
     
-    init(id: String, score: Int, quizState: [Int: QuizState]) {
+    init(id: String, score: Int, quizState: [Int: QuizState], viewControllerState: ViewControllerState) {
         self.id = id
         self.score = score
         self.quizState = quizState
+        self.viewControllerState = viewControllerState
     }
 }

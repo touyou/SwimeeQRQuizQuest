@@ -18,7 +18,7 @@ class QuizManager {
         startListening()
     }
     
-    private let quizCollectionArrayRelay = BehaviorRelay<[QuizCollection]>(value: [])
+    let quizCollectionArrayRelay = BehaviorRelay<[QuizCollection]>(value: [])
     var quizCollectionArray: Observable<[QuizCollection]> {
         return quizCollectionArrayRelay.asObservable()
     }
@@ -81,5 +81,196 @@ class QuizManager {
             quizzes.append(quiz)
         }
         return quizzes
+    }
+    
+    func showQuiz(index: Int) {
+        let collection = quizCollectionArrayRelay.value[index]
+        guard let groupID = GroupManager.shared.currentGroupRelay.value?.id else {
+            return
+        }
+        let answer = Int.random(in: 0..<3)
+        var choise = collection.quizzes[0].wrong
+        choise.insert(collection.quizzes[0].correct, at: answer)
+        db.collection("Group").document(groupID).updateData([
+            "viewControllerState": [
+                "type": ViewControllerStateType.answering.rawValue,
+                "question": collection.quizzes[0].question,
+                "answer": answer,
+                "choise": choise,
+                "quizCollectionID": collection.id,
+                "quizID": 0,
+                "answerer": UserManager.shared.usersMemberDataRelay.value!.id
+            ]
+        ])
+    }
+    
+    func selectAnswer(selected: Int) {
+        guard let viewControllerState = GroupManager.shared.currentGroupRelay.value?.viewControllerState else {
+            return
+        }
+        guard let groupID = GroupManager.shared.currentGroupRelay.value?.id else {
+            return
+        }
+        var score = GroupManager.shared.currentGroupRelay.value?.viewControllerState.score ?? 0
+        if selected == viewControllerState.answer {
+            score += 1
+        }
+        db.collection("Group").document(groupID).updateData([
+            "viewControllerState": [
+                "type": ViewControllerStateType.showAnswer.rawValue,
+                "question": viewControllerState.question as Any,
+                "answer": viewControllerState.answer as Any,
+                "choise": viewControllerState.choise as Any,
+                "quizCollectionID": viewControllerState.quizCollectionID as Any,
+                "quizID": viewControllerState.quizID as Any,
+                "answerer": UserManager.shared.usersMemberDataRelay.value!.id,
+                "selected": selected,
+                "score": score
+            ]
+            ])
+    }
+    
+    func nextQuiz() {
+        guard let viewControllerState = GroupManager.shared.currentGroupRelay.value?.viewControllerState else {
+            return
+        }
+        guard let groupID = GroupManager.shared.currentGroupRelay.value?.id else {
+            return
+        }
+        guard let collection = quizCollectionArrayRelay.value.filter({ (quizCollection) -> Bool in
+            return quizCollection.id == viewControllerState.quizCollectionID
+        }).first else {
+            return
+        }
+        if viewControllerState.quizID! + 1 != collection.quizzes.count {
+            let answer = Int.random(in: 0..<3)
+            var choise = collection.quizzes[viewControllerState.quizID! + 1].wrong
+            choise.insert(collection.quizzes[viewControllerState.quizID! + 1].correct, at: answer)
+            db.collection("Group").document(groupID).updateData([
+                "viewControllerState": [
+                    "type": ViewControllerStateType.answering.rawValue,
+                    "question": collection.quizzes[viewControllerState.quizID! + 1].question,
+                    "answer": answer,
+                    "choise": choise,
+                    "quizCollectionID": viewControllerState.quizCollectionID as Any,
+                    "quizID": viewControllerState.quizID! + 1,
+                    "answerer": UserManager.shared.usersMemberDataRelay.value!.id,
+                    "score": viewControllerState.score!
+                ]
+            ])
+        } else {
+            if viewControllerState.score! >= 3 {
+                var nextQuizCollectionID: Int!
+                var quizCollectionArray = quizCollectionArrayRelay.value
+                repeat{
+                    let nextQuizCollection = quizCollectionArray.randomElement()
+                    nextQuizCollectionID = nextQuizCollection?.id
+                    quizCollectionArray.remove(at: quizCollectionArray.firstIndex(of: nextQuizCollection!)!)
+                    if quizCollectionArray.count == 0 {
+                        var quizState = GroupManager.shared.currentGroupRelay.value?.quizState
+                        for data in quizState! {
+                            if data.value == .gotGemLast {
+                                quizState?.updateValue(.gotGem, forKey: data.key)
+                            }
+                        }
+                        quizState?.updateValue(.gotGemLast, forKey: collection.id)
+                        var quizStateString: [String:String] = [:]
+                        for data in quizState! {
+                            let state = data.value.rawValue
+                            quizStateString.updateValue(state, forKey: String(data.key))
+                        }
+                        db.collection("Group").document(groupID).updateData([
+                            "quizState": quizStateString
+                        ]) { (error) in
+                            if error == nil {
+                                self.db.collection("Group").document(groupID).updateData([
+                                    "viewControllerState": [
+                                        "type": ViewControllerStateType.notAnswering.rawValue,
+                                    ]
+                                ])
+                            }
+                        }
+                        db.collection("Group").document(groupID).updateData([
+                            "score": GroupManager.shared.currentGroupRelay.value!.score + (collection.score * viewControllerState.score!)
+                        ])
+                        return
+                    }
+                }while GroupManager.shared.currentGroupRelay.value?.quizState[nextQuizCollectionID] != nil && GroupManager.shared.currentGroupRelay.value?.quizState[nextQuizCollectionID] != QuizState.none
+                var quizState = GroupManager.shared.currentGroupRelay.value?.quizState
+                quizState?.updateValue(.scanableNext, forKey: nextQuizCollectionID)
+                for data in quizState! {
+                    if data.value == .gotGemLast {
+                        quizState?.updateValue(.gotGem, forKey: data.key)
+                    }
+                }
+                quizState?.updateValue(.gotGemLast, forKey: collection.id)
+                var quizStateString: [String:String] = [:]
+                for data in quizState! {
+                    let state = data.value.rawValue
+                    quizStateString.updateValue(state, forKey: String(data.key))
+                }
+                db.collection("Group").document(groupID).updateData([
+                    "quizState": quizStateString
+                ]) { (error) in
+                    if error == nil {
+                        self.db.collection("Group").document(groupID).updateData([
+                            "viewControllerState": [
+                                "type": ViewControllerStateType.result.rawValue,
+                                "answerer": UserManager.shared.usersMemberDataRelay.value!.id,
+                                "score": viewControllerState.score as Any
+                            ]
+                        ])
+                    }
+                }
+            } else {
+                if collection.id == 0 {
+                    self.db.collection("Group").document(groupID).updateData([
+                        "viewControllerState": [
+                            "type": ViewControllerStateType.notAnswering.rawValue
+                        ]
+                    ])
+                    return
+                }
+                let nextQuizCollectionID = GroupManager.shared.currentGroupRelay.value?.quizState.filter({ (state) -> Bool in
+                    return state.value == QuizState.gotGemLast
+                }).first!.key
+                var quizState = GroupManager.shared.currentGroupRelay.value?.quizState
+                quizState?.updateValue(.scanableBack, forKey: nextQuizCollectionID!)
+                quizState?.updateValue(.couldnotGet, forKey: collection.id)
+                var quizStateString: [String:String] = [:]
+                for data in quizState! {
+                    let state = data.value.rawValue
+                    quizStateString.updateValue(state, forKey: String(data.key))
+                }
+                db.collection("Group").document(groupID).updateData([
+                    "quizState": quizStateString
+                ]) { (error) in
+                    if error == nil {
+                        self.db.collection("Group").document(groupID).updateData([
+                            "viewControllerState": [
+                                "type": ViewControllerStateType.result.rawValue,
+                                "answerer": UserManager.shared.usersMemberDataRelay.value!.id,
+                                "score": viewControllerState.score as Any
+                            ]
+                            ])
+                    }
+                }
+            }
+            db.collection("Group").document(groupID).updateData([
+                "score": GroupManager.shared.currentGroupRelay.value!.score + (collection.score * viewControllerState.score!)
+            ])
+            
+        }
+    }
+    
+    func finishQuiz() {
+        guard let groupID = GroupManager.shared.currentGroupRelay.value?.id else {
+            return
+        }
+        self.db.collection("Group").document(groupID).updateData([
+            "viewControllerState": [
+                "type": ViewControllerStateType.notAnswering.rawValue
+            ]
+            ])
     }
 }
