@@ -81,23 +81,23 @@ class TopViewController: UIViewController {
                 switch element.1 {
                 case .answerable:
                     cell.imageView.alpha = 0.3
-                    cell.imageView.image = #imageLiteral(resourceName: "jewel_dia_1")
+                    cell.imageView.image = UIImage(named: "jewel\(String(row % 18))")
                     cell.flashing(true)
                 case .scanableNext:
-                    cell.imageView.alpha = 1
-                    cell.imageView.image = #imageLiteral(resourceName: "jewel_cdia_1")
+                    cell.imageView.alpha = 0.3
+                    cell.imageView.image = UIImage(named: "jewel\(String(row % 18))")
                     cell.flashing(true)
                 case .scanableBack:
                     cell.imageView.alpha = 1
-                    cell.imageView.image = #imageLiteral(resourceName: "jewel_dia_1")
+                    cell.imageView.image = UIImage(named: "jewel\(String(row % 18))")
                     cell.flashing(true)
                 case .gotGem:
                     cell.imageView.alpha = 1
-                    cell.imageView.image = #imageLiteral(resourceName: "jewel_dia_1")
+                    cell.imageView.image = UIImage(named: "jewel\(String(row % 18))")
                     cell.flashing(false)
                 case .couldnotGet:
                     cell.imageView.alpha = 0.3
-                    cell.imageView.image = #imageLiteral(resourceName: "jewel_dia_1")
+                    cell.imageView.image = UIImage(named: "jewel\(String(row % 18))")
                     cell.flashing(false)
                 case .none:
                     cell.imageView.alpha = 1
@@ -105,7 +105,7 @@ class TopViewController: UIViewController {
                     cell.flashing(false)
                 case .gotGemLast:
                     cell.imageView.alpha = 1
-                    cell.imageView.image = #imageLiteral(resourceName: "jewel_dia_1")
+                    cell.imageView.image = UIImage(named: "jewel\(String(row % 18))")
                     cell.flashing(false)
                 }
             }
@@ -125,9 +125,15 @@ class TopViewController: UIViewController {
                 case .answerable:
                     QuizManager.shared.showQuiz(index: indexPath.row)
                 case .scanableNext:
-                    break
+                    let nc = self?.storyboard?.instantiateViewController(withIdentifier: "Hint") as! UINavigationController
+                    let vc = nc.viewControllers.first! as! HintViewController
+                    vc.quizCollection = QuizManager.shared.quizCollectionArrayRelay.value[indexPath.row]
+                    self?.present(nc, animated: true, completion: nil)
                 case .scanableBack:
-                    break
+                    let nc = self?.storyboard?.instantiateViewController(withIdentifier: "Hint") as! UINavigationController
+                    let vc = nc.viewControllers.first! as! HintViewController
+                    vc.quizCollection = QuizManager.shared.quizCollectionArrayRelay.value[indexPath.row]
+                    self?.present(nc, animated: true, completion: nil)
                 case .gotGem:
                     break
                 case .couldnotGet:

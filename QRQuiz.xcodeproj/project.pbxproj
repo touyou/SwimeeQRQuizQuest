@@ -53,6 +53,7 @@
 		CAB8D489221C2CB8000F30FB /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB8D488221C2CB8000F30FB /* ResultViewController.swift */; };
 		CAB8D48B22205299000F30FB /* QRScaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB8D48A22205299000F30FB /* QRScaner.swift */; };
 		CAB8D48D222052CB000F30FB /* QRScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB8D48C222052CB000F30FB /* QRScanViewController.swift */; };
+		CAB8D48F2220E3F8000F30FB /* HintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB8D48E2220E3F8000F30FB /* HintViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		CAB8D488221C2CB8000F30FB /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		CAB8D48A22205299000F30FB /* QRScaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScaner.swift; sourceTree = "<group>"; };
 		CAB8D48C222052CB000F30FB /* QRScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanViewController.swift; sourceTree = "<group>"; };
+		CAB8D48E2220E3F8000F30FB /* HintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,25 +179,22 @@
 		CA3BDF6C2217C510000D497D /* QRQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				CA3BDF6D2217C510000D497D /* AppDelegate.swift */,
 				46AD0010221B9DAF005CE76B /* Extensions */,
 				46ADFFEB221B9D4A005CE76B /* Assets */,
 				CA3BDF8A2217CA61000D497D /* login */,
-				CA3BDF6D2217C510000D497D /* AppDelegate.swift */,
 				CAB8D481221BD71A000F30FB /* Top */,
+				CAB8D4912220EEAF000F30FB /* QR */,
+				CAB8D4902220EE89000F30FB /* Quiz */,
 				CA3BDF712217C510000D497D /* Main.storyboard */,
 				CA3BDF742217C513000D497D /* Assets.xcassets */,
 				CA3BDF762217C513000D497D /* LaunchScreen.storyboard */,
 				CA3BDF792217C513000D497D /* Info.plist */,
 				CA3BDF7F2217C670000D497D /* GoogleService-Info.plist */,
-				CA3BDF8F2217CC65000D497D /* UserManager.swift */,
-				CA3BDF852217C9C6000D497D /* Member.swift */,
 				CA3BDF9522182FAB000D497D /* CircleImageView.swift */,
-				CAB8D482221BD725000F30FB /* Quiz */,
-				CAB8D483221BD734000F30FB /* Group */,
-				CAB8D484221BEE2D000F30FB /* QuizViewController.swift */,
-				CAB8D488221C2CB8000F30FB /* ResultViewController.swift */,
-				CAB8D48A22205299000F30FB /* QRScaner.swift */,
-				CAB8D48C222052CB000F30FB /* QRScanViewController.swift */,
+				CAB8D4922220EEDB000F30FB /* MemberModel */,
+				CAB8D482221BD725000F30FB /* QuizModel */,
+				CAB8D483221BD734000F30FB /* GroupModel */,
 			);
 			path = QRQuiz;
 			sourceTree = "<group>";
@@ -212,6 +211,7 @@
 		CAB8D481221BD71A000F30FB /* Top */ = {
 			isa = PBXGroup;
 			children = (
+				CAB8D48E2220E3F8000F30FB /* HintViewController.swift */,
 				CA3BDF9722183072000D497D /* TopViewController.swift */,
 				CAB8D47F221BD70F000F30FB /* TopCollectionViewCell.swift */,
 				CA3BDF9B221ABFEC000D497D /* LogoutTableViewController.swift */,
@@ -219,24 +219,51 @@
 			path = Top;
 			sourceTree = "<group>";
 		};
-		CAB8D482221BD725000F30FB /* Quiz */ = {
+		CAB8D482221BD725000F30FB /* QuizModel */ = {
 			isa = PBXGroup;
 			children = (
 				CA3BDFA1221AF758000D497D /* QuizManager.swift */,
 				CA3BDFA3221AF781000D497D /* QuizCollection.swift */,
 				CAB8D47D221BB606000F30FB /* Quiz.swift */,
 			);
-			path = Quiz;
+			path = QuizModel;
 			sourceTree = "<group>";
 		};
-		CAB8D483221BD734000F30FB /* Group */ = {
+		CAB8D483221BD734000F30FB /* GroupModel */ = {
 			isa = PBXGroup;
 			children = (
 				CA3BDF9D221AC121000D497D /* GroupManager.swift */,
 				CA3BDF9F221AC196000D497D /* Group.swift */,
 				CAB8D486221BF112000F30FB /* ViewControllerState.swift */,
 			);
-			path = Group;
+			path = GroupModel;
+			sourceTree = "<group>";
+		};
+		CAB8D4902220EE89000F30FB /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				CAB8D484221BEE2D000F30FB /* QuizViewController.swift */,
+				CAB8D488221C2CB8000F30FB /* ResultViewController.swift */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		CAB8D4912220EEAF000F30FB /* QR */ = {
+			isa = PBXGroup;
+			children = (
+				CAB8D48A22205299000F30FB /* QRScaner.swift */,
+				CAB8D48C222052CB000F30FB /* QRScanViewController.swift */,
+			);
+			path = QR;
+			sourceTree = "<group>";
+		};
+		CAB8D4922220EEDB000F30FB /* MemberModel */ = {
+			isa = PBXGroup;
+			children = (
+				CA3BDF852217C9C6000D497D /* Member.swift */,
+				CA3BDF8F2217CC65000D497D /* UserManager.swift */,
+			);
+			path = MemberModel;
 			sourceTree = "<group>";
 		};
 		CD0B02AAAD9BC44627256F72 /* Pods */ = {
@@ -446,6 +473,7 @@
 				CA3BDF902217CC65000D497D /* UserManager.swift in Sources */,
 				CA3BDF8C2217CA6D000D497D /* LoginViewController.swift in Sources */,
 				CA3BDF9E221AC121000D497D /* GroupManager.swift in Sources */,
+				CAB8D48F2220E3F8000F30FB /* HintViewController.swift in Sources */,
 				CA3BDFA0221AC196000D497D /* Group.swift in Sources */,
 				CA3BDFA4221AF781000D497D /* QuizCollection.swift in Sources */,
 				CA3BDF9622182FAB000D497D /* CircleImageView.swift in Sources */,

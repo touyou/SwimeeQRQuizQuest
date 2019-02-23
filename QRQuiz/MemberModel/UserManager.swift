@@ -26,7 +26,7 @@ class UserManager {
         return user != nil
     }
     
-    private let allUserRelay = BehaviorRelay<[Member]>(value: [])
+    let allUserRelay = BehaviorRelay<[Member]>(value: [])
     var allUser: Observable<[Member]> {
         return allUserRelay.asObservable()
     }
