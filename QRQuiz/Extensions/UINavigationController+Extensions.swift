@@ -13,7 +13,10 @@ extension UINavigationController {
 
     func setupBarColor() {
 
-        self.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        self.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor.white,
+            .font: UIFont(name: "Futura", size: 20.0)!
+            ]
         self.navigationBar.barTintColor = UIColor.QRQuiz.mainRed
         self.navigationBar.tintColor = UIColor.white
         self.navigationBar.backgroundColor = UIColor.QRQuiz.mainRed

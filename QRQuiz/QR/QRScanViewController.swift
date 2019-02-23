@@ -34,6 +34,7 @@ class QRScanViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setupBarColor()
         qrScaner.startQRScan()
     }
     
@@ -61,10 +62,10 @@ class QRScanViewController: UIViewController {
                 }
                 if state == QuizState.scanableNext {
                     GroupManager.shared.scannedScanableNext(collectionID: qrInt)
-                    self?.showAlert(title: "クイズを回答できるようになった！トップ画面から確認しよう！")
+                    self?.showAlert(title: "クイズを回答できるようになった！ホーム画面から確認しよう！")
                 } else if state == QuizState.scanableBack {
                     GroupManager.shared.scannedScanableBack(collectionID: qrInt)
-                    self?.showAlert(title: "新しいクイズの手がかりを手に入れた！トップ画面から確認しよう！")
+                    self?.showAlert(title: "新しいクイズの手がかりを手に入れた！ホーム画面から確認しよう！")
                 }
             }).disposed(by: disposeBag)
         
