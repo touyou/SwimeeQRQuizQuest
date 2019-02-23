@@ -54,6 +54,9 @@ class QuizViewController: UIViewController {
                     self?.firstImageView.image = #imageLiteral(resourceName: "selection_1")
                     self?.secondImageView.image = #imageLiteral(resourceName: "selection_2")
                     self?.thirdImageView.image = #imageLiteral(resourceName: "selection_3")
+                    self?.firstLabel.backgroundColor = .white
+                    self?.secondLabel.backgroundColor = .white
+                    self?.thirdLabel.backgroundColor = .white
                     if let choise = group.viewControllerState.choise {
                         self?.firstLabel.text = choise[0]
                         self?.secondLabel.text = choise[1]
@@ -67,10 +70,12 @@ class QuizViewController: UIViewController {
                             self?.firstButton.isEnabled = true
                             self?.secondButton.isEnabled = true
                             self?.thirdButton.isEnabled = true
+                            self?.nextButton.setTitle("正しい選択肢をタップしてください", for: .normal)
                         } else {
                             self?.firstButton.isEnabled = false
                             self?.secondButton.isEnabled = false
                             self?.thirdButton.isEnabled = false
+                            self?.nextButton.setTitle("他のメンバーが解答中", for: .normal)
                         }
                         if let answererName = UserManager.shared.allUserRelay.value.filter({ (member) -> Bool in
                             return member.id == answerer
@@ -79,6 +84,7 @@ class QuizViewController: UIViewController {
                         }
                     }
                     self?.nextButton.isEnabled = false
+                    self?.nextButton.alpha = 0.5
                    
                 case .showAnswer:
                     if let choise = group.viewControllerState.choise {
@@ -97,14 +103,26 @@ class QuizViewController: UIViewController {
                             imageView?.image = #imageLiteral(resourceName: "wrong")
                         }
                     }
+                    if let selected = group.viewControllerState.selected {
+                        switch selected {
+                        case 0: self?.firstLabel.backgroundColor = UIColor(hex: "#eeeeee")
+                        case 1: self?.secondLabel.backgroundColor = UIColor(hex: "#eeeeee")
+                        case 2: self?.thirdLabel.backgroundColor = UIColor(hex: "#eeeeee")
+                        default: break;
+                        }
+                    }
                     self?.firstButton.isEnabled = false
                     self?.secondButton.isEnabled = false
                     self?.thirdButton.isEnabled = false
                     if let answerer = group.viewControllerState.answerer {
                         if answerer == UserManager.shared.usersMemberDataRelay.value?.id {
                             self?.nextButton.isEnabled = true
+                            self?.nextButton.setTitle("次に進む", for: .normal)
+                            self?.nextButton.alpha = 1.0
                         } else {
                             self?.nextButton.isEnabled = false
+                            self?.nextButton.setTitle("他のメンバーが解答中", for: .normal)
+                            self?.nextButton.alpha = 0.5
                         }
                         if let answererName = UserManager.shared.allUserRelay.value.filter({ (member) -> Bool in
                             return member.id == answerer
