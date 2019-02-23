@@ -23,6 +23,7 @@ class QuizViewController: UIViewController {
     @IBOutlet var secondButton: UIButton!
     @IBOutlet var thirdButton: UIButton!
     @IBOutlet var nextButton: UIButton!
+    @IBOutlet var answererLabel: UILabel!
     
     let disposeBag = DisposeBag()
 
@@ -65,8 +66,14 @@ class QuizViewController: UIViewController {
                             self?.secondButton.isEnabled = false
                             self?.thirdButton.isEnabled = false
                         }
+                        if let answererName = UserManager.shared.allUserRelay.value.filter({ (member) -> Bool in
+                            return member.id == answerer
+                        }).first?.name {
+                            self?.answererLabel.text = "\(answererName)のみ解答可能"
+                        }
                     }
                     self?.nextButton.isEnabled = false
+                   
                 case .showAnswer:
                     if let choise = group.viewControllerState.choise {
                         self?.firstLabel.text = choise[0]
@@ -81,7 +88,7 @@ class QuizViewController: UIViewController {
                         imageViews[answer]?.image = #imageLiteral(resourceName: "check")
                         imageViews.remove(at: answer)
                         for imageView in imageViews {
-                            imageView?.image = #imageLiteral(resourceName: "jewel_dia_2")
+                            imageView?.image = #imageLiteral(resourceName: "close")
                         }
                     }
                     self?.firstButton.isEnabled = false
@@ -92,6 +99,11 @@ class QuizViewController: UIViewController {
                             self?.nextButton.isEnabled = true
                         } else {
                             self?.nextButton.isEnabled = false
+                        }
+                        if let answererName = UserManager.shared.allUserRelay.value.filter({ (member) -> Bool in
+                            return member.id == answerer
+                        }).first?.name {
+                            self?.answererLabel.text = "\(answererName)のみ解答可能"
                         }
                     }
                 case .result:
