@@ -26,6 +26,12 @@ class HintViewController: UIViewController {
         secondHintLabel.text = quizCollection.hint[1]
         thirdHintLabel.text = quizCollection.hint[2]
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.setupBarColor()
+    }
     
     
     @IBAction func back() {
