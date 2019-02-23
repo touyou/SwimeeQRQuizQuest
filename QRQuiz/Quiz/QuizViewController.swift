@@ -33,6 +33,12 @@ class QuizViewController: UIViewController {
         // Do any additional setup after loading the view.
         bindData()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.setupBarColor()
+    }
     
     func bindData() {
         GroupManager.shared.currentGroup
@@ -88,7 +94,7 @@ class QuizViewController: UIViewController {
                         imageViews[answer]?.image = #imageLiteral(resourceName: "check")
                         imageViews.remove(at: answer)
                         for imageView in imageViews {
-                            imageView?.image = #imageLiteral(resourceName: "close")
+                            imageView?.image = #imageLiteral(resourceName: "wrong")
                         }
                     }
                     self?.firstButton.isEnabled = false

@@ -27,6 +27,12 @@ class TopViewController: UIViewController {
         // Do any additional setup after loading the view.
         bindData()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.setupBarColor()
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -78,34 +84,19 @@ class TopViewController: UIViewController {
             .asDriver(onErrorDriveWith: Driver.empty())
             .drive(collectionView.rx.items(cellIdentifier: "Cell", cellType: TopCollectionViewCell.self)) {row, element, cell in
                 cell.label.text = element.0.name
+                cell.imageView.image = UIImage.jewelImage(row, with: element.1)
                 switch element.1 {
-                case .answerable:
-                    cell.imageView.alpha = 0.3
-                    cell.imageView.image = UIImage(named: "jewel\(String(row % 18))")
+                case .answerable, .scanableBack:
+                    cell.imageView.alpha = 1
                     cell.flashing(true)
                 case .scanableNext:
                     cell.imageView.alpha = 0.3
-                    cell.imageView.image = UIImage(named: "jewel\(String(row % 18))")
                     cell.flashing(true)
-                case .scanableBack:
-                    cell.imageView.alpha = 1
-                    cell.imageView.image = UIImage(named: "jewel\(String(row % 18))")
-                    cell.flashing(true)
-                case .gotGem:
-                    cell.imageView.alpha = 1
-                    cell.imageView.image = UIImage(named: "jewel\(String(row % 18))")
-                    cell.flashing(false)
                 case .couldnotGet:
                     cell.imageView.alpha = 0.3
-                    cell.imageView.image = UIImage(named: "jewel\(String(row % 18))")
                     cell.flashing(false)
-                case .none:
+                case .none, .gotGemLast, .gotGem:
                     cell.imageView.alpha = 1
-                    cell.imageView.image = nil
-                    cell.flashing(false)
-                case .gotGemLast:
-                    cell.imageView.alpha = 1
-                    cell.imageView.image = UIImage(named: "jewel\(String(row % 18))")
                     cell.flashing(false)
                 }
             }

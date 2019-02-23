@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserManager.shared.isLoggedin {
             UserManager.shared.startListening()
         }
+
+        UITabBar.appearance().tintColor = UIColor.QRQuiz.mainRed
+
         return true
     }
 
