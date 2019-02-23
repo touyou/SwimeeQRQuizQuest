@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4680622B2220EEBE00603C05 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680622A2220EEBE00603C05 /* UIImage+Extensions.swift */; };
 		46AD0000221B9D81005CE76B /* Jost-600-SemiItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46ADFFEE221B9D7E005CE76B /* Jost-600-SemiItalic.ttf */; };
 		46AD0001221B9D81005CE76B /* Jost-800-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46ADFFEF221B9D7F005CE76B /* Jost-800-HeavyItalic.ttf */; };
 		46AD0002221B9D81005CE76B /* Jost-500-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46ADFFF0221B9D7F005CE76B /* Jost-500-MediumItalic.ttf */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		010A2E171994F2A96A1E0C2E /* Pods-QRQuiz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRQuiz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QRQuiz/Pods-QRQuiz.debug.xcconfig"; sourceTree = "<group>"; };
+		4680622A2220EEBE00603C05 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		46AD0011221B9DC6005CE76B /* UIColor+QRQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+QRQuiz.swift"; sourceTree = "<group>"; };
 		46AD0013221BA51C005CE76B /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		46AD0015221BA580005CE76B /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				46AD0011221B9DC6005CE76B /* UIColor+QRQuiz.swift */,
 				46AD0013221BA51C005CE76B /* UIView+Shadow.swift */,
 				46AD0015221BA580005CE76B /* UINavigationController+Extensions.swift */,
+				4680622A2220EEBE00603C05 /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				CAB8D487221BF112000F30FB /* ViewControllerState.swift in Sources */,
 				46AD0012221B9DC6005CE76B /* UIColor+QRQuiz.swift in Sources */,
 				CA3BDF862217C9C6000D497D /* Member.swift in Sources */,
+				4680622B2220EEBE00603C05 /* UIImage+Extensions.swift in Sources */,
 				CAB8D489221C2CB8000F30FB /* ResultViewController.swift in Sources */,
 				46AD0016221BA580005CE76B /* UINavigationController+Extensions.swift in Sources */,
 				CAB8D485221BEE2D000F30FB /* QuizViewController.swift in Sources */,
