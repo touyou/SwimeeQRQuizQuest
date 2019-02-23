@@ -12,7 +12,11 @@ import RxSwift
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet var tableView: UITableView! {
+        didSet {
+            tableView.tableFooterView = UIView()
+        }
+    }
     
     let disposeBag = DisposeBag()
 
@@ -22,6 +26,12 @@ class LoginViewController: UIViewController {
         bindTableView()
         didSelect()
         // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.setupBarColor()
     }
     
     func bindTableView() {
